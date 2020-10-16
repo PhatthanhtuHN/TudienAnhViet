@@ -13,11 +13,6 @@
    <children>
       <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="746.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Tệp">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Đóng" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Sửa">
             <items>
               <MenuItem mnemonicParsing="false" text="Thêm từ" />
