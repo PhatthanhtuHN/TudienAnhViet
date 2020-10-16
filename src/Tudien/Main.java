@@ -21,7 +21,7 @@ public class Main {
         System.out.println("    CHƯƠNG TRÌNH TỪ ĐIỂN ANH - VIỆT     ");
         functions();
         Scanner scanner = new Scanner(System.in);
-        dictionaryManagement.readFromFile();
+        dictionaryManagement.insertFromFile();
         while (true) {
             System.out.println("Nhập vào lựa chọn của bạn (Nếu không nhớ, hãy nhập 6)");
             switch (scanner.nextInt()) {

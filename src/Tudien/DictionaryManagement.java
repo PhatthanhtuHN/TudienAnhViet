@@ -10,7 +10,7 @@ public class DictionaryManagement {
     Dictionary dict = new Dictionary();
     private String FileTudien = "./src/Tudien/anhviet.txt";
 
-    public void readFromFile() {
+    public void insertFromFile() {
         Scanner sc = null;
         File file = null;
         try {

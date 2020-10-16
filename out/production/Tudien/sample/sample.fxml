@@ -37,8 +37,8 @@
             </Menu>
         </menus>
       </MenuBar>
-      <TextArea layoutX="8.0" layoutY="131.0" prefHeight="32.0" prefWidth="204.0" promptText="Nhập vào từ cần dịch" />
-      <TextField layoutX="360.0" layoutY="131.0" prefHeight="389.0" prefWidth="373.0" />
+      <TextArea fx:id="textArea" layoutX="8.0" layoutY="131.0" prefHeight="32.0" prefWidth="204.0" promptText="Nhập vào từ cần dịch" />
+      <TextField fx:id="textField" editable="false" layoutX="360.0" layoutY="131.0" prefHeight="389.0" prefWidth="373.0" />
       <Button layoutX="212.0" layoutY="131.0" mnemonicParsing="false" onAction="#submit" prefHeight="32.0" prefWidth="148.0" text="Dịch từ Anh - Việt" />
       <ListView layoutX="10.0" layoutY="178.0" prefHeight="343.0" prefWidth="200.0" />
    </children>
