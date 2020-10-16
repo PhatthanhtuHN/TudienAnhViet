@@ -24,7 +24,14 @@ public class Controller {
     @FXML
     private ListView<String> listView;
     public void submit(ActionEvent actionEvent) {
-        String a = textField.getText();
-        textArea.setText(a);
+//        String txt = textField.getText().trim();
+//        String search = dictionaryManagement.dictionaryLookupfx(txt);
+//        String result = "";
+//        if (search != null) {
+//            textArea.setText(txt + " " + search);
+//        }
+////        else {
+////            for (int i = 1; i < dictionaryManagement.)
+//        }
     }
 }

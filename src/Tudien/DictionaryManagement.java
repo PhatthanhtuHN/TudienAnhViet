@@ -2,8 +2,6 @@ package Tudien;
 
 import java.io.*;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class DictionaryManagement {
@@ -107,6 +105,18 @@ public class DictionaryManagement {
         for (Word w : dict.getList()){
             System.out.println(w.getWord_target());
         }
+    }
+
+    public String dictionaryLookupfx(String search) {
+        search = new Scanner(System.in).nextLine();
+        boolean f = false;
+        for(Word w : dict.getList()){
+            if(w.getWord_target().equals(search)) {
+                f = true;
+            }
+            return search;
+        }
+        return search;
     }
 
 //    public void dictionarySearcher() {
