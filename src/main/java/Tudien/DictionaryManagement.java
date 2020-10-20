@@ -35,7 +35,7 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
     }
-    
+
 
 //    public void insertFromCommandline() {
 //        System.out.print("Số từ bạn muốn thêm là: ");
