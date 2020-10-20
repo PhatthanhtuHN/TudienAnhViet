@@ -35,21 +35,7 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
     }
-
-//    public void exporttoFile() {
-//        Scanner sc = null;
-//        FileWriter fw = null;
-//        File file = null;
-//        try {
-//            file = new File("./src/Tudien/anhviet_1.txt");
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    
 
 //    public void insertFromCommandline() {
 //        System.out.print("Số từ bạn muốn thêm là: ");
