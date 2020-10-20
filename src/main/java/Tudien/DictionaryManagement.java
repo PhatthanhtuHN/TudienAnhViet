@@ -109,9 +109,10 @@ public class DictionaryManagement {
         ArrayList arrayList = new ArrayList();
         int num = str.length();
         for (Word w : dict.getList()) {
+            if (w.getWord_target().length() >= num)
             if (w.getWord_target().substring(0, num).equals(str)) {
                 arrayList.add(w.getWord_target());
-                System.out.println(w.getWord_target());
+
             }
         }
         return arrayList;
