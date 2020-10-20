@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class Controller {
         String txt = textField.getText().trim();
         String search = dictionaryManagement.dictionaryLookup(txt);
         if (search != null) {
-            textArea.setText(txt + " " + search);
+            textArea.setText(txt + " /" + search);
         }
     }
 
@@ -50,5 +51,23 @@ public class Controller {
             list.addAll(arrayList);
             listView.getItems().addAll(list);
         }
+    }
+
+    public void displaySelected(MouseEvent mouseEvent) {
+        String sugg = listView.getSelectionModel().getSelectedItem();
+        if (sugg == null||sugg.isEmpty()){}
+        else
+            textField.setText(sugg);
+            textArea.setText(sugg + " /" + dictionaryManagement.dictionaryLookup(sugg));
+    }
+
+    public void fasttranslate(KeyEvent keyEvent) {
+        String txt = textField.getText().trim();
+        String result = dictionaryManagement.dictionaryLookup(txt);
+        if (txt == null){}
+//        else if (txt != result) {
+//            textArea.setText("Không tìm thấy từ");
+//        }
+        else textArea.setText(txt + " /" + result);
     }
 }

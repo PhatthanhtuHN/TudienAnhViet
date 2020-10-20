@@ -69,10 +69,12 @@ public class DictionaryManagement {
 //    }
 
     public String dictionaryLookup(String target) {
+//        String nf = " Không tìm thấy từ";
         for (Word w : dict.getList()) {
             if (w.getWord_target().equals(target)) {
                 return w.getWord_spell() + "\n" + w.getWord_explain();
             }
+//            else return nf;
         }
         return null;
     }
