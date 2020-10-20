@@ -51,7 +51,7 @@
                </input></Reflection>
          </effect>
       </ImageView>
-      <Label contentDisplay="CENTER" layoutX="14.0" layoutY="6.0" prefHeight="103.0" prefWidth="352.0" text="Từ điển Anh - Việt" textFill="#000000a8">
+      <Label alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="37.0" prefHeight="45.0" prefWidth="291.0" text="Từ điển Anh - Việt" textFill="#000000a8">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
@@ -59,7 +59,7 @@
             <Blend />
          </effect>
       </Label>
-      <Label layoutX="14.0" layoutY="69.0" opacity="0.0" prefHeight="55.0" prefWidth="339.0" text="Xóa nhòa rào cản ngôn ngữ của bạn">
+      <Label layoutX="14.0" layoutY="69.0" opacity="0.76" prefHeight="55.0" prefWidth="339.0" text="Xóa nhòa rào cản ngôn ngữ của bạn">
          <font>
             <Font name="System Italic" size="19.0" />
          </font>
