@@ -21,9 +21,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Sửa">
             <items>
-              <MenuItem mnemonicParsing="false" text="Thêm từ" />
-                  <MenuItem mnemonicParsing="false" text="Sửa từ" />
-                  <MenuItem mnemonicParsing="false" text="Xóa từ" />
+              <MenuItem mnemonicParsing="false" onAction="#add" text="Thêm từ" />
+<!--                  <MenuItem mnemonicParsing="false" onAction="#edit" text="Sửa từ" />-->
+                  <MenuItem mnemonicParsing="false" onAction="#delete" text="Xóa từ" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Tham khảo">
@@ -64,7 +64,9 @@
             <Font name="System Italic" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="textField" layoutX="10.0" layoutY="132.0" onKeyReleased="#suggest" onKeyTyped="#fasttranslate" prefHeight="32.0" prefWidth="200.0" />
-      <TextArea fx:id="textArea" layoutX="358.0" layoutY="131.0" prefHeight="390.0" prefWidth="374.0" />
+      <TextField fx:id="textField" layoutX="10.0" layoutY="132.0" onKeyReleased="#suggest" onKeyTyped="#fasttranslate" prefHeight="32.0" prefWidth="200.0" promptText="Nhập từ bạn muốn dịch" />
+      <TextArea fx:id="textArea" editable="false" layoutX="358.0" layoutY="131.0" prefHeight="390.0" prefWidth="374.0" promptText="Nghĩa Anh - Việt của từ" />
+      <Button layoutX="210.0" layoutY="229.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="148.0" text="Sửa nghĩa của từ" />
+<!--      <Button layoutX="210.0" layoutY="260.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="148.0" text="Xóa từ khỏi từ điển" />-->
    </children>
 </AnchorPane>

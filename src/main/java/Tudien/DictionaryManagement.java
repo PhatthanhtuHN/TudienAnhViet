@@ -28,7 +28,7 @@ public class DictionaryManagement {
                     define.append(line).append("\n");
                     line = (sc.hasNext()) ? sc.nextLine() : null;
                 }
-                dict.addWord(w[0].substring(1).trim(), w.length > 1 ? w[1] : "", define.toString());
+                dict.addWord(w[0].substring(1).trim(), w.length > 1 ? "/" + w[1] : "", define.toString());
             }
 
         } catch (IOException e) {
@@ -36,26 +36,8 @@ public class DictionaryManagement {
         }
     }
 
-
-//    public void insertFromCommandline() {
-//        System.out.print("Số từ bạn muốn thêm là: ");
-//
-//        int n = new Scanner(System.in).nextInt();
-//
-//        for(int i=0; i<n; i++) {
-//            System.out.println("Nhập từ bạn muốn thêm: ");
-//            String target = new Scanner(System.in).nextLine();
-//            System.out.println("Nhập phát âm của từ bạn muốn thêm: ");
-//            String spell = new Scanner(System.in).nextLine();
-//            System.out.println("Nhập nghĩa của từ: ");
-//            String explain = new Scanner(System.in).nextLine();
-//            dict.addWord(target, spell, explain);
-//        }
-//        System.out.println("Xong!");
-//    }
-
     public String dictionaryLookup(String target) {
-//        String nf = " Không tìm thấy từ";
+        String nf = " Không tìm thấy từ";
         for (Word w : dict.getList()) {
             if (w.getWord_target().equals(target)) {
                 return w.getWord_spell() + "\n" + w.getWord_explain();
@@ -65,19 +47,16 @@ public class DictionaryManagement {
         return null;
     }
 
-//    public void editWord() {
-//        System.out.print("Nhập từ bạn muốn chỉnh sửa: ");
-//        String needEdit = new Scanner(System.in).nextLine();
-//        System.out.print("Nhập nghĩa bạn muốn chỉnh sửa: ");
-//        String edit = new Scanner(System.in).nextLine();
-//        for(Word w : dict.getList()){
-//            if(w.getWord_target().equals(needEdit)) {
-//                w.setWord_explain(edit);
-//                break;
-//            }
-//        }
-//        System.out.println("Xong!");
-//    }
+
+    public void add(Word w) {
+        String target = w.getWord_target();
+        String spell = w.getWord_spell();
+        String explain = w.getWord_explain();
+
+        dict.addWord(target, spell, explain);
+    }
+
+
 //
 //    public void deleteWord() {
 //        System.out.print("Nhập từ bạn muốn xóa: ");
@@ -105,4 +84,21 @@ public class DictionaryManagement {
         }
         return arrayList;
     }
+
+    public void editWord(String needEdit, String spell, String edit) {
+        for (int i = 0; i < dict.getList().size(); i++) {
+            if ((dict.getList().get(i)).getWord_target().equals(needEdit)) {
+                (dict.getList().get(i)).setWord_explain(edit);
+            }
+        }
+    }
+
+    public void deleteWord(String needDelete){
+        for (int i = 0; i < dict.getList().size(); i++) {
+            if ((dict.getList().get(i)).getWord_target().equals(needDelete)) {
+                dict.getList().remove(i);
+            }
+        }
+    }
+
 }
