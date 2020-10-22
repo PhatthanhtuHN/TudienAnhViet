@@ -56,14 +56,6 @@ public class DictionaryManagement {
         dict.addWord(target, spell, explain);
     }
 
-
-//
-//    public void deleteWord() {
-//        System.out.print("Nhập từ bạn muốn xóa: ");
-//        Word delete = new Word(new Scanner(System.in).nextLine(), "", "");
-//        while (dict.contain(delete)) dict.getList().remove(delete);
-//        System.out.println("Xong!");
-//    }
 //
 //    public void showallWord(){
 //        for (Word w : dict.getList()){
