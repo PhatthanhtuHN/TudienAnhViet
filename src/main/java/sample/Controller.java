@@ -90,7 +90,8 @@ public class Controller {
         dialog.setHeaderText("Nhập vào từ bạn muốn thêm: ");
 
         ButtonType addButton = new ButtonType("Thêm từ", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(addButton, ButtonType.CANCEL);
+        ButtonType cancel = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(addButton, cancel);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -98,9 +99,11 @@ public class Controller {
         grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField target = new TextField();
+        target.setPromptText("Nhập từ bạn muốn thêm");
         target.setMaxSize(300,300);
         grid.add(target, 0, 0);
         TextArea explain = new TextArea();
+        explain.setPromptText("Nhập nghĩa của từ cần thêm");
         explain.setMaxSize(300, 300);
         grid.add(explain, 0, 1);
 
@@ -142,8 +145,9 @@ public class Controller {
         dialog.setTitle("Sửa từ");
         dialog.setWidth(300);
 
-        ButtonType changeButton = new ButtonType("Sửa từ", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(changeButton, ButtonType.CANCEL);
+        ButtonType changeButton = new ButtonType("Sửa nghĩa của từ", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(changeButton, cancel);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -186,7 +190,8 @@ public class Controller {
         dialog.setHeaderText("Nhập từ bạn muốn xóa");
 
         ButtonType deleteButton = new ButtonType("Xóa", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(deleteButton, ButtonType.CANCEL);
+        ButtonType cancel = new ButtonType("Hủy", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(deleteButton, cancel);
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -224,8 +229,11 @@ public class Controller {
                         return new String(word.getText().trim());
                     }
                 } else {
-                    Alert alert2 = new Alert(Alert.AlertType.ERROR);
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.initStyle(StageStyle.UTILITY);
                     alert2.setHeaderText("Từ không tồn tại.");
+                    ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    alert2.getButtonTypes().setAll(ok);
                     alert2.showAndWait();
                 }
             }
@@ -241,10 +249,12 @@ public class Controller {
 
     public void about(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.NONE);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("dict.png"));
         alert.setTitle("Thông tin");
         alert.setContentText("Từ điển Anh - Việt đơn giản\n" +
                 "Thực hiện: Hoàng Lê Trọng Trung - 18021323\n" +
-                "               Thịnh Thành Vinh - 18021431");
+                "                  Thịnh Thành Vinh - 18021431");
         alert.getButtonTypes().addAll(ButtonType.OK);
         alert.show();
     }
