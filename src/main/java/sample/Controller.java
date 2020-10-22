@@ -9,9 +9,13 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import javafx.util.Pair;
 
 
@@ -79,6 +83,9 @@ public class Controller {
 
     public void add(ActionEvent actionEvent) {
         Dialog<Pair<String, String>> dialog = new Dialog<>();
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("dict.png"));
+        dialog.setWidth(300);
         dialog.setTitle("Thêm từ");
         dialog.setHeaderText("Nhập vào từ bạn muốn thêm: ");
 
@@ -91,8 +98,10 @@ public class Controller {
         grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField target = new TextField();
+        target.setMaxSize(300,300);
         grid.add(target, 0, 0);
         TextArea explain = new TextArea();
+        explain.setMaxSize(300, 300);
         grid.add(explain, 0, 1);
 
 
@@ -128,7 +137,10 @@ public class Controller {
 
     public void edit(ActionEvent actionEvent) {
         Dialog<String> dialog = new Dialog<>();
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("dict.png"));
         dialog.setTitle("Sửa từ");
+        dialog.setWidth(300);
 
         ButtonType changeButton = new ButtonType("Sửa từ", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(changeButton, ButtonType.CANCEL);
@@ -139,7 +151,8 @@ public class Controller {
         grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextArea wordchange = new TextArea();
-        wordchange.setText(dictionaryManagement.dictionaryLookup(textField.getText().trim()));
+        wordchange.setMaxSize(300,300);
+        wordchange.setPromptText(dictionaryManagement.dictionaryLookup(textField.getText().trim()));
         grid.add(wordchange, 0, 0);
 
 
@@ -167,6 +180,8 @@ public class Controller {
 
     public void delete(ActionEvent actionEvent) {
         Dialog<String> dialog = new Dialog<>();
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("dict.png"));
         dialog.setTitle("Xóa từ");
         dialog.setHeaderText("Nhập từ bạn muốn xóa");
 
@@ -198,6 +213,7 @@ public class Controller {
                 String re = dictionaryManagement.dictionaryLookup(str);
                 if (re != null) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.initStyle(StageStyle.UTILITY);
                     alert.setTitle("Xác nhận");
                     alert.setHeaderText("Bạn chắc chắn muốn xóa từ?");
                     ButtonType buttonYes = new ButtonType("Có", ButtonBar.ButtonData.YES);
@@ -222,5 +238,15 @@ public class Controller {
         });
     }
 
+
+    public void about(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Thông tin");
+        alert.setContentText("Từ điển Anh - Việt đơn giản\n" +
+                "Thực hiện: Hoàng Lê Trọng Trung - 18021323\n" +
+                "               Thịnh Thành Vinh - 18021431");
+        alert.getButtonTypes().addAll(ButtonType.OK);
+        alert.show();
+    }
 }
 

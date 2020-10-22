@@ -33,7 +33,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Trợ giúp">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Thông tin thêm" />
+                  <MenuItem mnemonicParsing="false" onAction="#about" text="Thông tin thêm" />
                </items>
             </Menu>
         </menus>
@@ -42,7 +42,7 @@
       <ListView fx:id="listView" layoutX="10.0" layoutY="164.0" onMouseClicked="#displaySelected" prefHeight="355.0" prefWidth="200.0" />
       <ImageView fitHeight="103.0" fitWidth="164.0" layoutX="568.0" layoutY="30.0" opacity="0.91" pickOnBounds="true">
          <image>
-            <Image url="@dich-thuat-tieng-anh-sang-tieng-viet-co-don-gian-khong-compressed.jpg" />
+            <Image url="@anhviet.jpg" />
          </image>
          <effect>
             <Reflection>
