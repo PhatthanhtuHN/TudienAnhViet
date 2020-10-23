@@ -3,7 +3,6 @@ package TudienGUI;
 
 import Tudien.DictionaryManagement;
 import Tudien.Word;
-import TudienGUI.GoogleAPI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +25,6 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class Controller {
     DictionaryManagement dictionaryManagement;
-    GoogleAPI googleAPI;
 
     public Controller() throws IOException {
         dictionaryManagement = new DictionaryManagement();
@@ -122,7 +120,7 @@ public class Controller {
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == addButton) {
                 String str = dictionaryManagement.dictionaryLookup(target.getText().trim());
-                if (str != null) {
+                if (str != "") {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Từ bạn nhập vào đã tồn tại.");
                     alert.show();
@@ -137,6 +135,7 @@ public class Controller {
         result.ifPresent(userPass -> {
             dictionaryManagement.add(new Word(userPass.getKey().trim(), "", userPass.getValue()));
         });
+        dictionaryManagement.savetoFile();
     }
 
 
@@ -247,6 +246,7 @@ public class Controller {
         result.ifPresent(userPass -> {
             dictionaryManagement.deleteWord(result.get().trim());
         });
+        dictionaryManagement.savetoFile();
     }
 
 
