@@ -182,6 +182,7 @@ public class Controller {
         result.ifPresent(userPass -> {
             dictionaryManagement.editWord(textField.getText().trim(), "", result.get());
         });
+        dictionaryManagement.savetoFile();
     }
 
     public void delete(ActionEvent actionEvent) {

@@ -8,22 +8,27 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class DictionaryManagement {
     Dictionary dict = new Dictionary();
-    private String FileTudien = "anhviet.txt";
+    private String Tudien = "anhviet.txt";
+    String TudienEdited = "anhviet_edited.txt";
 
     public void insertFromFile() {
         Scanner sc = null;
         File file = null;
         try {
-            file = new File(FileTudien);
+            file = new File(TudienEdited);
+            if (!file.exists()) file = new File(Tudien);
             InputStream in = new FileInputStream(file);
             sc = new Scanner(in);
-            sc.nextLine();
+//            sc.nextLine();
             for (String line = sc.nextLine(); line != null; ) {
                 StringBuilder define = new StringBuilder();
                 String w[] = {};
@@ -37,7 +42,7 @@ public class DictionaryManagement {
                 }
                 dict.addWord(w[0].substring(1).trim(), w.length > 1 ? "/" + w[1] : "", define.toString());
             }
-
+            sc.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,6 +145,24 @@ public class DictionaryManagement {
         in.close();
         return response.toString();
 //        return "";
+    }
+
+
+    public void savetoFile() {
+        File file = new File("anhviet_edited.txt");
+        try {
+//            FileOutputStream outputStream = new FileOutputStream(file);
+            FileWriter writer = new FileWriter(file);
+            for (Word i : dict.getList()) {
+                writer.write("@" + i.getWord_target());
+                writer.write(i.getWord_spell() + "\n");
+                writer.write(i.getWord_explain().trim() + "\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
