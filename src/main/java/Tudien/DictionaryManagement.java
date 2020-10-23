@@ -107,7 +107,7 @@ public class DictionaryManagement {
 
     public void speech(String txt) {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        Voice syntheticVoice = VoiceManager.getInstance().getVoice("kevin16");
+        com.sun.speech.freetts.Voice syntheticVoice = VoiceManager.getInstance().getVoice("kevin16");
         if (syntheticVoice != null) {
             syntheticVoice.allocate();
             try {
