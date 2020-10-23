@@ -1,9 +1,14 @@
 package Tudien;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+
 import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static com.sun.speech.freetts.Gender.FEMALE;
 
 public class DictionaryManagement {
     Dictionary dict = new Dictionary();
@@ -93,5 +98,24 @@ public class DictionaryManagement {
         }
     }
 
+    public void speech(String txt) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        com.sun.speech.freetts.Voice syntheticVoice = VoiceManager.getInstance().getVoice("kevin16");
+        if (syntheticVoice != null) {
+            syntheticVoice.allocate();
+            try {
+                syntheticVoice.setRate(150);
+                syntheticVoice.setPitch(70);
+                syntheticVoice.setVolume(3);
+                syntheticVoice.speak(txt);
+                syntheticVoice.deallocate();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        else {
+            throw new IllegalStateException("Cannot find voice: kevin16");
+        }
+    }
 
 }
