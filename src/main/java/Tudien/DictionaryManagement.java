@@ -5,10 +5,12 @@ import com.sun.speech.freetts.VoiceManager;
 
 import java.io.*;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.sun.speech.freetts.Gender.FEMALE;
 
 public class DictionaryManagement {
     Dictionary dict = new Dictionary();
@@ -49,7 +51,7 @@ public class DictionaryManagement {
             }
 //            else return nf;
         }
-        return null;
+        return "";
     }
 
 
@@ -116,6 +118,28 @@ public class DictionaryManagement {
         else {
             throw new IllegalStateException("Cannot find voice: kevin16");
         }
+    }
+
+    public static String translate(String langFrom, String langTo, String text) throws IOException {
+        // INSERT YOU URL HERE
+        String urlStr = "https://script.google.com/macros/s/AKfycbxKw8SInMj5zU1lIIAd4DnNY9Mx94JulwA6g8mPAst4uDQC-d0/exec" +
+                "?q=" + URLEncoder.encode(text, "UTF-8") +
+                "&target=" + langTo +
+                "&source=" + langFrom;
+//        System.out.println(urlStr);
+        URL url = new URL(urlStr);
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+//        System.out.println(con);
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        return response.toString();
+//        return "";
     }
 
 }

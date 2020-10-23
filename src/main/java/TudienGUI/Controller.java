@@ -1,7 +1,9 @@
-package sample;
+package TudienGUI;
+
 
 import Tudien.DictionaryManagement;
 import Tudien.Word;
+import TudienGUI.GoogleAPI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class Controller {
     DictionaryManagement dictionaryManagement;
+    GoogleAPI googleAPI;
 
     public Controller() throws IOException {
         dictionaryManagement = new DictionaryManagement();
@@ -63,10 +66,10 @@ public class Controller {
 
     public void displaySelected(MouseEvent mouseEvent) {
         String sugg = listView.getSelectionModel().getSelectedItem();
-        if (sugg == null || sugg.isEmpty()) {
-        } else
+        if (sugg != null && !sugg.isEmpty()) {
             textField.setText(sugg);
-        textArea.setText(sugg + " " + dictionaryManagement.dictionaryLookup(sugg));
+            textArea.setText(sugg + " " + dictionaryManagement.dictionaryLookup(sugg));
+        }
     }
 
     public void fasttranslate(KeyEvent keyEvent) {
@@ -263,5 +266,15 @@ public class Controller {
     }
 
 
+    public void en_vi(ActionEvent actionEvent) throws IOException {
+        String txt = textField.getText().trim();
+        System.out.println(dictionaryManagement.translate("en", "vi", txt));
+        textArea.setText(dictionaryManagement.translate("en", "vi", txt));
+    }
+
+    public void vi_en(ActionEvent actionEvent) throws IOException {
+        String txt = textField.getText().trim();
+        textArea.setText(dictionaryManagement.translate("vi", "en", txt));
+    }
 }
 

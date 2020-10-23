@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TudienGUI.Controller">
    <children>
       <MenuBar layoutY="-2.0" prefHeight="32.0" prefWidth="746.0">
         <menus>
@@ -66,8 +67,14 @@
       </Label>
       <TextField fx:id="textField" layoutX="10.0" layoutY="132.0" onKeyReleased="#suggest" onKeyTyped="#fasttranslate" prefHeight="32.0" prefWidth="200.0" promptText="Nhập từ bạn muốn dịch" />
       <TextArea fx:id="textArea" editable="false" layoutX="358.0" layoutY="131.0" prefHeight="390.0" prefWidth="374.0" promptText="Nghĩa Anh - Việt của từ" />
-      <Button layoutX="210.0" layoutY="229.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="148.0" text="Sửa nghĩa của từ" />
-      <Button layoutX="210.0" layoutY="198.0" mnemonicParsing="false" onAction="#speak" prefHeight="31.0" prefWidth="148.0" text="Đọc phát âm" textAlignment="CENTER" />
+      <Button layoutX="210.0" layoutY="216.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="148.0" text="Sửa nghĩa của từ" />
+      <Button layoutX="210.0" layoutY="185.0" mnemonicParsing="false" onAction="#speak" prefHeight="31.0" prefWidth="148.0" text="Đọc phát âm" textAlignment="CENTER" />
+      <MenuButton contentDisplay="CENTER" layoutX="210.0" layoutY="278.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0" text="Dịch với Google API" textOverrun="CLIP">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#en_vi" text="Dịch Anh - Việt" />
+          <MenuItem mnemonicParsing="false" onAction="#vi_en" text="Dịch Việt - Anh" />
+        </items>
+      </MenuButton>
 <!--      <Button layoutX="210.0" layoutY="260.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="148.0" text="Xóa từ khỏi từ điển" />-->
    </children>
 </AnchorPane>
